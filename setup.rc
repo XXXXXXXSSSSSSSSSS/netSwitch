@@ -1,0 +1,4 @@
+1 ICON "app.ico"
+1 24 "app.manifest"
+201 RCDATA "NetSwitch.exe"
+202 RCDATA "NetSwitchService.exe"

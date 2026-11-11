@@ -1,0 +1,3 @@
+#include "network.hpp"
+#include <iostream>
+int main(){try{ComScope com;CoInitializeSecurity(NULL,-1,NULL,NULL,RPC_C_AUTHN_LEVEL_DEFAULT,RPC_C_IMP_LEVEL_IMPERSONATE,NULL,EOAC_NONE,NULL);Network net;auto all=net.wmi.list();unsigned wifi=0,eth=0,unknown=0,readable=0;for(auto& a:all){if(a.kind==1)++wifi;else if(a.kind==2)++eth;else ++unknown;for(DWORD family:{(DWORD)AF_INET,(DWORD)AF_INET6}){Entry e={};wcscpy(e.guid,a.guid);e.family=family;Value v={};if(net.read(e,v))++readable;}}std::cout<<"Production inventory read-only: WiFi="<<wifi<<", Ethernet="<<eth<<", offline/unknown="<<unknown<<", readable IP settings="<<readable<<". No settings changed.\n";return 0;}catch(...){std::cerr<<"Read-only inventory failed\n";return 1;}}

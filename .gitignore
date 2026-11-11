@@ -1,0 +1,18 @@
+# Build output and runtime test state
+*.exe
+*.dll
+*.o
+*.obj
+*.a
+*.lib
+*.bin
+*.bin.tmp
+extraction-test/
+# Editor and operating system files
+.vscode/
+.idea/
+*.bak
+*.orig
+*.log
+Thumbs.db
+Desktop.ini
